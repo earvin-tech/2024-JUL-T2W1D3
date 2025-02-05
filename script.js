@@ -28,8 +28,23 @@ function renderData() {
         const newCostumeEntry = document.createElement("li")
         newCostumeEntry.innerText = costume
 
+        // Create and append a remove button
+        const removeButton = document.createElement("button")
+        removeButton.innerText = `Remove ${costume}`
+
+        // Add the functionality to the remove button 
+        removeButton.addEventListener("click", () => {
+            removeCostumeFromList(costumesContainerList, newCostumeEntry)
+        })
+
+        newCostumeEntry.appendChild(removeButton)
+
         costumesContainerList.appendChild(newCostumeEntry)
     })
 
     costumesContainer.appendChild(costumesContainerList)
+}
+
+function removeCostumeFromList(list, entry) {
+    list.removeChild(entry)
 }
